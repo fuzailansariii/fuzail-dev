@@ -1,15 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg:  #080808;
+  --s1:  #0f0f0f;   /* card surface */
+  --s2:  #161616;   /* card hover */
+
+  /* Borders */
+  --b1:  #222222;
+  --b2:  #2e2e2e;
+
+  /* Accent — Violet */
+  --v1:  #7c3aed;
+  --v2:  #8b5cf6;
+  --v3:  #a78bfa;
+  --v4:  #c4b5fd;
+
+  /* Text */
+  --tx:  #f4f4f5;
+  --t2:  #a1a1aa;
+  --t3:  #71717a;
+  --t4:  #52525b;
+
+  /* Status */
+  --gr:  #22c55e;   /* green / live */
+
+  /* Font utilities */
+  --font-heading: var(--font-syne); /* Syne for display / headings */
+  --font-mono-ui: var(--font-mono); /* Space Mono for code / labels */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-syne);
+  --font-mono-ui: var(--font-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +44,20 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background: var(--bg);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono-ui {
+  font-family: var(--font-mono-ui);
 }
