@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Space_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import AuroraBg from "@/components/layout/aurora-bg";
+import Cursor from "@/components/layout/cursor";
+import Navbar from "@/components/layout/navbar";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -27,9 +30,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${mono.variable} h-full antialiased`}
+      className={`${syne.variable} ${mono.variable} h-full antialiased overflow-x-hidden`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col overflow-x-hidden">
+        <AuroraBg />
+        <Cursor />
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }

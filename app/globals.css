@@ -1,63 +1,115 @@
 @import "tailwindcss";
 
-:root {
+@theme inline {
   /* Backgrounds */
-  --bg:  #080808;
-  --s1:  #0f0f0f;   /* card surface */
-  --s2:  #161616;   /* card hover */
+  --color-bg: #080808;
+  --color-s1: #0f0f0f;
+  --color-s2: #161616;
 
   /* Borders */
-  --b1:  #222222;
-  --b2:  #2e2e2e;
+  --color-b1: #222222;
+  --color-b2: #2e2e2e;
 
   /* Accent — Violet */
-  --v1:  #7c3aed;
-  --v2:  #8b5cf6;
-  --v3:  #a78bfa;
-  --v4:  #c4b5fd;
+  --color-v1: #7c3aed;
+  --color-v2: #8b5cf6;
+  --color-v3: #a78bfa;
+  --color-v4: #c4b5fd;
 
   /* Text */
-  --tx:  #f4f4f5;
-  --t2:  #a1a1aa;
-  --t3:  #71717a;
-  --t4:  #52525b;
+  --color-tx: #f4f4f5;
+  --color-t2: #a1a1aa;
+  --color-t3: #71717a;
+  --color-t4: #52525b;
 
   /* Status */
-  --gr:  #22c55e;   /* green / live */
+  --color-gr: #22c55e;
 
-  /* Font utilities */
-  --font-heading: var(--font-syne); /* Syne for display / headings */
-  --font-mono-ui: var(--font-mono); /* Space Mono for code / labels */
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Fonts */
   --font-heading: var(--font-syne);
   --font-mono-ui: var(--font-mono);
+
+  --animate-float: float 18s ease-in-out infinite;
+  --animate-float-reverse: floatReverse 24s ease-in-out infinite;
+  --animate-ping-slow: ping-slow 2s ease-out infinite;
+  --animate-scan: scan 2.4s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #080808;
+    color: #f4f4f5;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 2px;
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translate(0, 0);
+    }
 
-body {
-  background: var(--bg);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+    50% {
+      transform: translate(50px, -30px);
+    }
 
-.font-heading {
-  font-family: var(--font-heading);
-}
+    100% {
+      transform: translate(0, 0);
+    }
+  }
 
-.font-mono-ui {
-  font-family: var(--font-mono-ui);
+  @keyframes floatReverse {
+    0% {
+      transform: translate(0, 0);
+    }
+
+    50% {
+      transform: translate(-60px, 40px);
+    }
+
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes ping-slow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+  @keyframes scan {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  .animate-ping-slow {
+    animation: ping-slow 2s ease-out infinite;
+  }
+  .animate-scan {
+    animation: scan 2.4s ease-in-out infinite;
+  }
 }
