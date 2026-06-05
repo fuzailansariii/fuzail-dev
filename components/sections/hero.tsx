@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Container from "../ui/container";
 import TerminalCard from "../terminal-card";
 import { Divider } from "../ui/divider";
+import SocialLinks from "../ui/social-links";
 
 export default function Hero() {
   return (
@@ -33,7 +34,6 @@ export default function Hero() {
               Mohd Fuzail Ansari&nbsp;&mdash;&nbsp;Full Stack Developer
             </span>
           </motion.div>
-
           {/* ── Two-column grid ── */}
           <div className="flex flex-col items-center justify-between gap-12 lg:flex-row">
             {/* ── LEFT: Content ── */}
@@ -43,7 +43,7 @@ export default function Hero() {
                 initial={{ y: 24, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.65, delay: 0.3 }}
-                className="mb-5 font-heading text-[clamp(3rem,9vw,7rem)] font-extrabold leading-none tracking-[-0.045em]"
+                className="mb-5 font-heading text-center md:text-start text-[clamp(3rem,9vw,7rem)] font-extrabold leading-none tracking-[-0.045em]"
               >
                 <span className="block text-tx">Building</span>
                 <span className="block bg-linear-to-br from-white via-v4 to-v1 bg-clip-text text-transparent">
@@ -67,7 +67,7 @@ export default function Hero() {
                 </p>
 
                 {/* Buttons */}
-                <div className="flex items-center gap-3 shrink-0">
+                <div className="flex items-center justify-center md:justify-start gap-3 shrink-0">
                   <Link
                     href="#work"
                     className="rounded bg-v1 px-7 py-3 font-mono-ui text-[10px] uppercase tracking-[0.12em] text-white transition-all hover:-translate-y-0.5 hover:bg-[#6d28d9] hover:shadow-[0_10px_32px_rgba(124,58,237,0.45)]"
@@ -94,33 +94,11 @@ export default function Hero() {
               <TerminalCard />
             </motion.div>
           </div>
-
           {/* ── Social Links (vertical, right edge) ── */}
-          <motion.div
-            initial={{ x: 16, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-            className="absolute top-1/2 -right-8 hidden -translate-y-1/2 flex-col items-center gap-5 xl:flex"
-          >
-            {[
-              { label: "GitHub", href: "https://github.com/fuzailansariii" },
-              { label: "X", href: "https://x.com/fuzail_ansarii" },
-              {
-                label: "LinkedIn",
-                href: "https://www.linkedin.com/in/mohdfuzailansari",
-              },
-              { label: "Email", href: "mailto:fuzailansarisecret@gmail.com" },
-            ].map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                target={label !== "Email" ? "_blank" : undefined}
-                className="font-mono-ui text-[10px] font-semibold uppercase tracking-[0.16em] text-t4 transition-colors hover:text-v3 [writing-mode:vertical-rl]"
-              >
-                {label}
-              </Link>
-            ))}
-          </motion.div>
+          <SocialLinks
+            orientation="vertical"
+            className="absolute top-1/2 -right-8 hidden -translate-y-1/2 xl:flex"
+          />
         </div>
       </Container>
     </section>

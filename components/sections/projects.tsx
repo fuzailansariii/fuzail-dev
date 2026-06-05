@@ -163,7 +163,7 @@ export default function Projects() {
               <span>Github</span>
 
               <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                <ArrowUp />
+                <ArrowUp className="size-3" />
               </span>
             </div>
           </Link>
@@ -227,7 +227,7 @@ export default function Projects() {
                 <div className="inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-all duration-300 group-hover:gap-3 group-hover:text-v3">
                   <span>Github</span>
                   <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                    <ArrowUp />
+                    <ArrowUp className="size-3" />
                   </span>
                 </div>
               </Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "../ui/container";
+import SocialLinks from "../ui/social-links";
 
 const NAV = ["About", "Stack", "Work", "Contact"];
 
@@ -7,7 +8,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-b1 py-10">
+    <footer className="border-t border-b1 py-8">
       <Container>
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Logo */}
@@ -20,20 +21,12 @@ export default function Footer() {
 
           {/* Nav */}
           <div className="flex items-center gap-6">
-            {NAV.map((item) => (
-              <Link
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="font-mono-ui text-[10px] uppercase tracking-[0.16em] text-t4 transition-colors hover:text-t2"
-              >
-                {item}
-              </Link>
-            ))}
+            <SocialLinks orientation="horizontal" />
           </div>
 
           {/* Copyright */}
           <p className="font-mono-ui text-[10px] uppercase tracking-[0.14em] text-t4">
-            &copy; {year} Fuzail
+            ● {year} Fuzail
           </p>
         </div>
       </Container>
