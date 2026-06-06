@@ -25,26 +25,36 @@ const SOCIALS = [
 type SocialLinksProps = {
   orientation?: "vertical" | "horizontal";
   className?: string;
+  animate?: boolean;
 };
 
 export default function SocialLinks({
   orientation = "horizontal",
   className = "",
+  animate,
 }: SocialLinksProps) {
   const isVertical = orientation === "vertical";
 
   return (
     <motion.div
-      initial={{
-        x: isVertical ? 16 : 0,
-        y: isVertical ? 0 : 16,
-        opacity: 0,
-      }}
-      animate={{
-        x: 0,
-        y: 0,
-        opacity: 1,
-      }}
+      initial={
+        animate
+          ? {
+              x: isVertical ? 16 : 0,
+              y: isVertical ? 0 : 16,
+              opacity: 0,
+            }
+          : false
+      }
+      animate={
+        animate
+          ? {
+              x: 0,
+              y: 0,
+              opacity: 1,
+            }
+          : false
+      }
       transition={{
         duration: 0.5,
         delay: 1,

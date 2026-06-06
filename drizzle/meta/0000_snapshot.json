@@ -1,11 +1,101 @@
 {
-  "id": "23a36035-3adf-428e-9ccc-4ae0b3439b30",
+  "id": "c61e0b46-b167-44e0-b970-7e27631ff9ff",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.users": {
-      "name": "users",
+    "public.project": {
+      "name": "project",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tags": {
+          "name": "tags",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'"
+        },
+        "status": {
+          "name": "status",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'wip'"
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "github_url": {
+          "name": "github_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "live_url": {
+          "name": "live_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "featured": {
+          "name": "featured",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.contact": {
+      "name": "contact",
       "schema": "",
       "columns": {
         "id": {
@@ -16,21 +106,27 @@
         },
         "name": {
           "name": "name",
-          "type": "varchar(256)",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
         "email": {
           "name": "email",
-          "type": "varchar(256)",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
-        "bio": {
-          "name": "bio",
+        "subject": {
+          "name": "subject",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
+        },
+        "message": {
+          "name": "message",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",
