@@ -9,6 +9,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   target?: string;
+  onClick?: () => {};
 }
 
 export default function Button({
@@ -19,6 +20,7 @@ export default function Button({
   type = "button",
   disabled,
   target,
+  onClick,
 }: ButtonProps) {
   const base =
     "rounded px-7 py-3 font-mono-ui text-[10px] uppercase tracking-[0.12em] transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0";
@@ -45,7 +47,12 @@ export default function Button({
   }
 
   return (
-    <button type={type} disabled={disabled} className={classes}>
+    <button
+      type={type}
+      disabled={disabled}
+      className={classes}
+      onClick={onClick}
+    >
       {title}
     </button>
   );

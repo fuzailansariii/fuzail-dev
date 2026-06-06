@@ -3,7 +3,7 @@ import { Space_Mono, Syne } from "next/font/google";
 import "./globals.css";
 import AuroraBg from "@/components/layout/aurora-bg";
 import Cursor from "@/components/layout/cursor";
-import Navbar from "@/components/layout/navbar";
+import Providers from "@/components/providers";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -33,10 +33,11 @@ export default function RootLayout({
       className={`${syne.variable} ${mono.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
-        <AuroraBg />
-        <Cursor />
-        <Navbar />
-        {children}
+        <Providers>
+          <AuroraBg />
+          <Cursor />
+          {children}
+        </Providers>
       </body>
     </html>
   );

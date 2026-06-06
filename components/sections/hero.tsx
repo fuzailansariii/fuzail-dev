@@ -4,8 +4,12 @@ import Container from "../ui/container";
 import TerminalCard from "../terminal-card";
 import SocialLinks from "../ui/social-links";
 import Button from "../ui/button";
+import { useClerk, useUser } from "@clerk/nextjs";
 
 export default function Hero() {
+  // TODO: Remove signout from here.
+  const { isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
   return (
     <section className="relative overflow-hidden">
       {/* Background Orb */}
@@ -73,6 +77,12 @@ export default function Hero() {
                     href="/Fuzail-Ansari.pdf"
                     target="_blank"
                   />
+                  {isSignedIn && (
+                    <Button
+                      title={`Sign Out ${user?.firstName}`}
+                      onClick={() => signOut({ redirectUrl: "/sign-in" })}
+                    />
+                  )}
                 </div>
               </motion.div>
             </div>
