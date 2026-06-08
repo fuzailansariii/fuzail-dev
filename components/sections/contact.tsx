@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import FormInput from "../ui/input";
 import SectionLabel from "../ui/section-label";
 import Container from "../ui/container";
-import { Divider } from "../ui/divider";
 import Link from "next/link";
+import Button from "../ui/button";
 
 type ContactFormData = {
   name: string;
@@ -50,11 +50,8 @@ export default function Contact() {
             <SectionLabel count="04" label="Contact" />
 
             {/* Heading */}
-            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4.5rem)] tracking-[-0.035em] leading-[1.1]">
-              Let&apos;s build{" "}
-              <span className="bg-linear-to-br from-white via-v4 to-v1 bg-clip-text text-transparent">
-                something great.
-              </span>
+            <h2 className="font-heading font-extrabold text-[clamp(2rem,5vw,4.5rem)] text-tx tracking-[-0.035em] leading-[1.1]">
+              Let&apos;s build something great.
             </h2>
 
             {/* Paragraph */}
@@ -151,13 +148,12 @@ export default function Contact() {
               )}
 
               {/* Submit button */}
-              <button
+              <Button
+                title={isSubmitting ? "Sending..." : "Send Message"}
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full font-mono text-[11px] uppercase tracking-[0.08em] py-3.5 rounded bg-v1 text-white hover:bg-[#6d28d9] hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(124,58,237,0.45)] transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
+                className="w-full py-3.5"
+              />
             </form>
           </motion.div>
         </div>

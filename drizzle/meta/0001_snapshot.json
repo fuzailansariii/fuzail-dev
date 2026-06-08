@@ -1,6 +1,6 @@
 {
-  "id": "c61e0b46-b167-44e0-b970-7e27631ff9ff",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f3998bec-a3bf-4b04-82e8-bb69265da49f",
+  "prevId": "c61e0b46-b167-44e0-b970-7e27631ff9ff",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -10,15 +10,22 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "title": {
           "name": "title",
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "sub_heading": {
+          "name": "sub_heading",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "description": {
           "name": "description",
@@ -38,7 +45,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'wip'"
+          "default": "'in_progress'"
         },
         "type": {
           "name": "type",
@@ -100,9 +107,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",

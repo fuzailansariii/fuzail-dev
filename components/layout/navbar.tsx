@@ -2,10 +2,13 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {

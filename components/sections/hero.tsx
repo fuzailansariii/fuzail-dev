@@ -1,20 +1,22 @@
 "use client";
-
-import Link from "next/link";
 import { motion } from "motion/react";
 import Container from "../ui/container";
 import TerminalCard from "../terminal-card";
-import { Divider } from "../ui/divider";
 import SocialLinks from "../ui/social-links";
+import Button from "../ui/button";
+import { useClerk, useUser } from "@clerk/nextjs";
 
 export default function Hero() {
+  // TODO: Remove signout from here.
+  const { isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
   return (
     <section className="relative overflow-hidden">
       {/* Background Orb */}
       <div className="pointer-events-none absolute top-[-150px] left-[-80px] h-[500px] w-[500px] max-w-[90vw] rounded-full bg-[radial-gradient(circle,#7c3aed,transparent)] opacity-10 blur-[80px]" />
 
       <Container>
-        <div className="relative flex min-h-screen flex-col justify-center pt-24 pb-20 lg:pt-0 lg:pb-0 gap-5">
+        <div className="relative flex h-screen flex-col justify-center pt-24 pb-20 lg:pt-0 lg:pb-0 gap-5">
           {/* ── Top name / role row ── */}
           <motion.div
             initial={{ y: 12, opacity: 0 }}
@@ -68,18 +70,19 @@ export default function Hero() {
 
                 {/* Buttons */}
                 <div className="flex items-center justify-center md:justify-start gap-3 shrink-0">
-                  <Link
-                    href="#work"
-                    className="rounded bg-v1 px-7 py-3 font-mono-ui text-[10px] uppercase tracking-[0.12em] text-white transition-all hover:-translate-y-0.5 hover:bg-[#6d28d9] hover:shadow-[0_10px_32px_rgba(124,58,237,0.45)]"
-                  >
-                    View Work
-                  </Link>
-                  <Link
-                    href="#contact"
-                    className="rounded border border-b2 px-7 py-3 font-mono-ui text-[10px] uppercase tracking-[0.12em] text-t2 transition-all hover:-translate-y-0.5 hover:border-v2 hover:text-tx"
-                  >
-                    Let&apos;s Talk
-                  </Link>
+                  <Button title="View Work" variant="primary" href="#work" />
+                  <Button
+                    title="Resume"
+                    variant="ghost"
+                    href="/Fuzail-Ansari.pdf"
+                    target="_blank"
+                  />
+                  {isSignedIn && (
+                    <Button
+                      title={`Sign Out ${user?.firstName}`}
+                      onClick={() => signOut({ redirectUrl: "/sign-in" })}
+                    />
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -96,6 +99,7 @@ export default function Hero() {
           </div>
           {/* ── Social Links (vertical, right edge) ── */}
           <SocialLinks
+            animate
             orientation="vertical"
             className="absolute top-1/2 -right-8 hidden -translate-y-1/2 xl:flex"
           />

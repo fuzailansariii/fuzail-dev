@@ -46,6 +46,9 @@
     overflow-x: hidden;
     cursor: none;
   }
+  * {
+    cursor: none !important;
+  }
 
   ::-webkit-scrollbar {
     width: 4px;
