@@ -15,7 +15,7 @@ export const projectSchema = z.object({
     .array(z.string().trim())
     .min(1, "At least one tag required")
     .max(10, "Too many tags"),
-  status: z.enum(["live", "wip", "archived"]),
+  status: z.enum(["live", "in_progress", "archived"]),
   type: z.enum(["client", "personal"]),
   githubUrl: z.url("Invalid URL").optional(),
   liveUrl: z.url("Invalid URL").optional(),
