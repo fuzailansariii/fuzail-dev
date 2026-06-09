@@ -23,4 +23,7 @@ export const projectSchema = z.object({
   order: z.number().int().min(0).default(0),
 });
 
+export const updateProjectSchema = projectSchema.partial();
+export type UpdateProjectSchema = z.infer<typeof updateProjectSchema>;
+
 export type ProjectFormData = z.infer<typeof projectSchema>;
