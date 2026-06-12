@@ -76,7 +76,7 @@ export const FeaturedProjectCard = ({
         />
       )}
 
-      <Link href={project.githubUrl ?? "#"} className="block p-5 md:p-9">
+      <div className="block p-5 md:p-9">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-v1/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
         <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -93,9 +93,9 @@ export const FeaturedProjectCard = ({
           </div>
         </div>
 
-        <h3 className="mb-6 font-heading text-[2.25rem] sm:text-[3rem] font-black tracking-tighter text-tx transition-colors duration-300 group-hover:text-v3">
+        <h2 className="mb-6 font-heading text-[2.25rem] sm:text-[3rem] font-black tracking-tighter text-tx transition-colors duration-300 group-hover:text-v3">
           {project.title}
-        </h3>
+        </h2>
 
         <p className="mb-8 max-w-2xl font-mono-ui text-[13px] leading-[1.9] text-t2">
           {project.description}
@@ -107,13 +107,30 @@ export const FeaturedProjectCard = ({
           ))}
         </div>
 
-        <div className="inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-all duration-300 group-hover:gap-3 group-hover:text-v3">
-          <span>Github</span>
-          <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-            <ArrowUp className="size-3" />
-          </span>
+        <div className="flex items-center gap-5">
+          <Link
+            target="_blank"
+            href={project.liveUrl ?? "#"}
+            className="group/link inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-colors duration-300 hover:text-v3"
+          >
+            <span>Live</span>
+            <span className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+              <ArrowUp className="size-3" />
+            </span>
+          </Link>
+
+          <Link
+            target="_blank"
+            href={project.githubUrl ?? "#"}
+            className="group/link inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-colors duration-300 hover:text-v3"
+          >
+            <span>Github</span>
+            <span className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+              <ArrowUp className="size-3" />
+            </span>
+          </Link>
         </div>
-      </Link>
+      </div>
 
       {confirmOpen && (
         <ConfirmDialog
@@ -159,10 +176,10 @@ export const ProjectCard = ({
         />
       )}
 
-      <Link href={project.githubUrl ?? "#"} className="block p-5 md:p-9">
+      <div className="block p-5 md:p-9">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-v1/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-2">
           <div className="font-mono-ui text-[10px] tracking-widest text-t4 mb-4">
             {project.subHeading && (
               <p className="text-[10px] text-v3/60 tracking-wider font-mono-ui">
@@ -173,9 +190,9 @@ export const ProjectCard = ({
           <Badge status={project.status} type={project.type} />
         </div>
 
-        <h3 className="mb-2.5 font-heading text-[1.25rem] tracking-tighter font-black text-tx transition-colors group-hover:text-v3">
+        <h2 className="mb-2.5 font-heading text-[1.25rem] tracking-tighter font-black text-tx transition-colors group-hover:text-v3">
           {project.title}
-        </h3>
+        </h2>
 
         <p className="mb-5 font-mono-ui text-[12px] leading-[1.85] text-t2">
           {project.description}
@@ -187,13 +204,30 @@ export const ProjectCard = ({
           ))}
         </div>
 
-        <div className="inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-all duration-300 group-hover:gap-3 group-hover:text-v3">
-          <span>Github</span>
-          <span className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-            <ArrowUp className="size-3" />
-          </span>
+        <div className="flex items-center gap-5 mt-5">
+          <Link
+            target="_blank"
+            href={project.liveUrl ?? "#"}
+            className="group/link inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-colors duration-300 hover:text-v3"
+          >
+            <span>Live</span>
+            <span className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+              <ArrowUp className="size-3" />
+            </span>
+          </Link>
+
+          <Link
+            target="_blank"
+            href={project.githubUrl ?? "#"}
+            className="group/link inline-flex items-center gap-2 font-mono-ui text-[11px] uppercase tracking-[0.06em] text-t2 transition-colors duration-300 hover:text-v3"
+          >
+            <span>Github</span>
+            <span className="transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">
+              <ArrowUp className="size-3" />
+            </span>
+          </Link>
         </div>
-      </Link>
+      </div>
 
       {confirmOpen && (
         <ConfirmDialog
