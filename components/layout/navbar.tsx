@@ -3,10 +3,20 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import StatusIndicator from "../ui/status-indicator";
+import Button from "../ui/button";
+import { useClerk, useUser } from "@clerk/nextjs";
+import Model from "../ui/model";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [projectModal, setProjectModal] = useState<boolean>(false);
+
+  const { user, isLoaded } = useUser();
+  const { signOut } = useClerk();
+
+  const isAdmin = isLoaded && user?.publicMetadata.role === "admin";
 
   useActiveSection();
 
@@ -83,18 +93,23 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Hire me Button */}
-          <motion.div
-            // initial={{ y: 14, opacity: 0 }}
-            // animate={{ y: 0, opacity: 1 }}
-            // transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-            className="hidden md:flex items-center gap-2.5 font-mono-ui text-[11px] uppercase tracking-[0.14em] text-t2"
-          >
-            <div className="relative h-[7px] w-[7px] rounded-full bg-gr">
-              <span className="animate-ping-slow absolute inset-[-3px] rounded-full bg-gr/30" />
+          {/* Status Indicator */}
+          {isLoaded && isAdmin ? (
+            <div className="hidden md:flex items-center gap-3">
+              <Button
+                title="Add Project"
+                variant="ghost"
+                onClick={() => setProjectModal(true)}
+              />
+              <Button
+                title="Sign Out"
+                variant="primary"
+                onClick={() => signOut()}
+              />
             </div>
-            <span>Available for work</span>
-          </motion.div>
+          ) : (
+            <StatusIndicator className="hidden md:flex text-[11px] uppercase" />
+          )}
 
           {/* Hamburger */}
           <button
@@ -116,7 +131,7 @@ export default function Navbar() {
         </nav>
       </motion.header>
       {/* Mobile Overlay */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -8 }}
@@ -144,21 +159,44 @@ export default function Navbar() {
             ))}
 
             {/* Available status in mobile menu */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                duration: 0.3,
-                delay: navLinks.length * 0.06 + 0.1,
-              }}
-              className="absolute bottom-12 flex items-center gap-2.5 font-mono-ui text-[10px] uppercase tracking-[0.14em] text-t3"
-            >
-              <div className="relative h-[6px] w-[6px] rounded-full bg-gr">
-                <span className="animate-ping-slow absolute inset-[-3px] rounded-full bg-gr/30" />
-              </div>
-              <span>Available for work</span>
-            </motion.div>
+            {isLoaded && isAdmin ? (
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 12 }}
+                transition={{ duration: 0.28, delay: 0.3 }}
+                className="md:hidden flex flex-col items-center gap-8"
+              >
+                <Button
+                  title="Add Project"
+                  variant="ghost"
+                  className="border-none text-[15px]"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setProjectModal(true);
+                  }}
+                />
+                <Button
+                  title="Sign Out"
+                  variant="primary"
+                  className="text-[15px]"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    signOut();
+                  }}
+                />
+              </motion.div>
+            ) : (
+              <StatusIndicator
+                animate
+                animationDelay={navLinks.length * 0.06 + 0.1}
+                className="absolute bottom-12 text-[10px] text-t3 uppercase"
+              />
+            )}
           </motion.div>
+        )}
+        {projectModal && (
+          <Model onClose={() => setProjectModal(false)} mode="create" />
         )}
       </AnimatePresence>
     </>

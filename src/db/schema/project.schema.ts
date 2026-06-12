@@ -21,6 +21,8 @@ export const project = pgTable("project", {
   githubUrl: text("github_url"),
   liveUrl: text("live_url"),
   featured: boolean("featured").notNull().default(false),
-  order: integer("order").notNull().default(0),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+export type Project = typeof project.$inferSelect;

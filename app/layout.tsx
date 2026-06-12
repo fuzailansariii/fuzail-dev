@@ -4,6 +4,7 @@ import "./globals.css";
 import AuroraBg from "@/components/layout/aurora-bg";
 import Cursor from "@/components/layout/cursor";
 import Providers from "@/components/providers";
+import { Toaster } from "sonner";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Providers>
           <AuroraBg />
           <Cursor />
+          <Toaster />
           {children}
         </Providers>
       </body>
