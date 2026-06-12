@@ -8,7 +8,7 @@ export async function GET() {
     const projects = await db
       .select()
       .from(project)
-      .orderBy(desc(project.order));
+      .orderBy(desc(project.createdAt));
 
     if (!projects.length) return errorResponse("No projects found", 404);
 

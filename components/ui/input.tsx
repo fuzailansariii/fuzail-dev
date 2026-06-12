@@ -16,7 +16,7 @@ const FormInput = forwardRef<
 >(({ label, error, textarea, ...props }, ref) => {
   return (
     <div>
-      <label className="block font-mono text-[10px] uppercase tracking-widest text-t4 mb-1.5">
+      <label className="block font-mono font-bold text-[10px] uppercase tracking-widest text-t4 mb-1.5">
         {label}
       </label>
       {textarea ? (

@@ -1,6 +1,6 @@
 import React from "react";
 
-type ProjectStatus = "live" | "in_progress";
+type ProjectStatus = "live" | "in_progress" | "archived";
 type ProjectType = "client" | "personal";
 
 interface BadgeProps {
@@ -11,6 +11,7 @@ interface BadgeProps {
 const statusStyles = {
   live: "bg-gr/10 text-green-400 border border-gr/20",
   in_progress: "bg-yellow-400/10 text-yellow-400 border border-yellow-400/20",
+  archived: "bg-gray-400/10 text-gray-400 border border-gray-400/20",
 };
 
 const typeStyles = {

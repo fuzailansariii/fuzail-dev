@@ -1,5 +1,5 @@
 {
-  "id": "c61e0b46-b167-44e0-b970-7e27631ff9ff",
+  "id": "65cd45fd-9c5c-4dc3-a616-f8d0e3fd041f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,15 +10,22 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "title": {
           "name": "title",
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "sub_heading": {
+          "name": "sub_heading",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         },
         "description": {
           "name": "description",
@@ -38,7 +45,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'wip'"
+          "default": "'in_progress'"
         },
         "type": {
           "name": "type",
@@ -71,15 +78,15 @@
           "notNull": true,
           "default": false
         },
-        "order": {
-          "name": "order",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
-          "default": 0
-        },
         "created_at": {
           "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
           "notNull": true,
@@ -100,9 +107,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",

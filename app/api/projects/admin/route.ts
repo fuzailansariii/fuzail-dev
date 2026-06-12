@@ -25,6 +25,6 @@ export async function POST(req: NextRequest) {
     return successResponse(created, 201);
   } catch (error) {
     console.error("POST /api/admin/projects error: ", error);
-    errorResponse("Internal server error", 500);
+    return errorResponse("Internal server error", 500);
   }
 }

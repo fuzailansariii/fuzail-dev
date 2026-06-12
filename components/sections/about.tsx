@@ -5,7 +5,7 @@ import SectionLabel from "../ui/section-label";
 import CodeWindow from "../layout/code-window";
 
 const STATS = [
-  { value: "3+", label: "Years building" },
+  { value: "2+", label: "Years building" },
   { value: "10+", label: "Projects shipped" },
   { value: "\u221E", label: "Lines of code" },
   { value: "1", label: "Goal" },

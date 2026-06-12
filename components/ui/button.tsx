@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { MouseEventHandler } from "react";
 
 interface ButtonProps {
   title: string;
@@ -9,7 +10,7 @@ interface ButtonProps {
   disabled?: boolean;
   className?: string;
   target?: string;
-  onClick?: () => {};
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function Button({
