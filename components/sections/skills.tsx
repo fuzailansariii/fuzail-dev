@@ -12,11 +12,11 @@ const STACK = [
   },
   {
     category: "backend",
-    items: ["Node.js", "tRPC", "Drizzle ORM", "REST APIs"],
+    items: ["Node.js", "Drizzle ORM", "REST APIs"],
   },
   {
     category: "database",
-    items: ["PostgreSQL", "Supabase", "Redis", "Neon"],
+    items: ["PostgreSQL", "Supabase"],
   },
   {
     category: "devops",
