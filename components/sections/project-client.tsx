@@ -92,6 +92,7 @@ export default function ProjectsClient({
                 key={project.id}
                 project={project}
                 index={idx}
+                total={regularProjects.length}
                 isAdmin={isAdmin}
                 onEdit={() => handleEdit(project)}
                 onDelete={() => handleDelete(project.id)}

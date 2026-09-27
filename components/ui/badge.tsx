@@ -21,7 +21,7 @@ const typeStyles = {
 
 export default function Badge({ status, type }: BadgeProps) {
   return (
-    <div className="flex gap-2 h-5">
+    <div className="flex shrink-0 gap-2 h-5">
       <span
         className={`rounded-xs px-2 py-0.5 font-mono-ui text-[10px] font-bold uppercase tracking-[0.06em] ${
           statusStyles[status]
